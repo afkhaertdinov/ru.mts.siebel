@@ -11,15 +11,7 @@ public abstract class AbstractAnimal implements Animal {
         this.character = character;
     }
 
-    public abstract void about(); // Коротко о животном
-    public void printingCharacteristics(){ // Печать характеристик
-        System.out.println("Характеристики:");
-        System.out.println("   порода: " + breed);
-        System.out.println("   имя: " + name);
-        System.out.println("   цена: " + cost);
-        System.out.println("   характер: " + character);
-        System.out.println();
-    }
+    public abstract String about(); // Коротко о животном
     @Override
     public String getBreed() {
         return breed;

@@ -11,8 +11,8 @@ public abstract class Predator extends AbstractAnimal {
     }
 
     @Override
-    public void about() {
-        System.out.println("Опасный хищник, среда обитания " + habitat + ".");
+    public String about() {
+        return "Опасный хищник, среда обитания " + habitat.toString();
     }
 
     public String getHabitat() {

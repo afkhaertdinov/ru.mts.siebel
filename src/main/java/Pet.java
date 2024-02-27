@@ -11,8 +11,8 @@ public abstract class Pet extends AbstractAnimal {
     }
 
     @Override
-    public void about() {
-        System.out.println("Домашний питомец который отлично умеет " + purpose + ".");
+    public String about() {
+        return "Домашний питомец. " + purpose.toString();
     }
 
     public String getPurpose() {

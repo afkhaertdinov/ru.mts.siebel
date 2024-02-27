@@ -1,6 +1,6 @@
 public class Shark extends Predator {
     public Shark(String breed, String name, Double cost, String character) {
-        super(breed, name, cost, character, "морские водоёмы");
+        super(breed, name, cost, character, "акулы - морские водоёмы.");
     }
 
     public Shark(String breed, String name, Double cost, String character, String habitat) {
