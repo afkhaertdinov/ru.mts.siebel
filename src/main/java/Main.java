@@ -1,25 +1,38 @@
+//import Service.AnimalOfTheBreed;
+import DTO.Animal;
+import Service.*;
+
+import static Service.ConstsClass.CONSTNUM;
+
 public class Main {
     public static void main(String[] args) {
-        final int CONSTNUM = 6; // Количество значений для проверки метода CreateAnimalServiceImpl.CreateAnimalServiceImpl(constNum)
         Animal[] animalArray;
         CreateAnimalsServiceImpl createAnimals = new CreateAnimalsServiceImpl();
 
-        CreateAnimalsService.CreateAnimalService(); // Создаём 10 уникальных животных при помощи метода while.
-        System.out.printf("%n%n");
-        CreateAnimalsServiceImpl.CreateAnimalService(); // Создаём 10 уникальных животных при помощи метода do..while.
-        System.out.printf("%n%n");
-        animalArray = createAnimals.CreateAnimalServiceImpl(CONSTNUM); //метод, который создает N животных с помощью цикла for (где N - параметр, передаваемый в метод).
+        // Создаём 10 уникальных животных при помощи метода while.
+        animalArray = CreateAnimalsService.CreateAnimalService();
+        System.out.println("Проверяем последний массив животных:");
+        System.out.printf(animalArray != null ? printAnimals(animalArray) : "!!!Массив пустой!!!%n");
 
+        // Создаём 10 уникальных животных при помощи метода do..while.
+        animalArray = createAnimals.CreateAnimalService();
+        System.out.println("Проверяем последний массив животных:");
+        System.out.printf(animalArray != null ? printAnimals(animalArray) : "!!!Массив пустой!!!%n");
 
-        System.out.printf("%n%nПроверяем последний массив животных:%n");
-        System.out.println(animalArray != null ? PrintAnimals(animalArray) : "!!!Массив пустой!!!");
+        //метод, который создает N животных с помощью цикла for (где N - параметр, передаваемый в метод).
+        animalArray = createAnimals.createAnimalServiceImpl(CONSTNUM);
+        System.out.println("Проверяем последний массив животных:");
+        System.out.printf(animalArray != null ? printAnimals(animalArray) : "!!!Массив пустой!!!%n");
     }
-    private static Object PrintAnimals(Animal[] animalArray) {
+
+    private static String printAnimals(Animal[] animalArray) {
+        int i = 1;
         for (Animal animal : animalArray) {
             if (animal != null) {
-                System.out.printf("%s%nХарактеристики:%n   порода: %s%n   имя: %s%n   цена: %.2f%n   характер: %s%n%n",animal.about(),animal.getBreed(),animal.getName(),animal.getCost(),animal.getCharacter());
+                System.out.printf("%02d. " + animal.about() + "%n",i++);
+                System.out.printf("    порода: %s; имя: %s; цена: $%.2f; характер: %s%n",animal.getBreed(),animal.getName(),animal.getCost(),animal.getCharacter());
             }
         }
-        return "Печать массива закончена!";
+        return "Печать массива закончена!%n%n";
     }
 }

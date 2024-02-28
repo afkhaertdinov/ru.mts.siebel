@@ -1,3 +1,7 @@
+package DTO;
+
+import DTO.AbstractAnimal;
+
 public abstract class Pet extends AbstractAnimal {
     protected String purpose; // Назначение питомца в истории людей
 
@@ -19,4 +23,13 @@ public abstract class Pet extends AbstractAnimal {
         return purpose;
     }
 
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "breed='" + breed + '\'' +
+                ", name='" + name + '\'' +
+                ", cost=" + cost +
+                ", character='" + character + '\'' +
+                '}';
+    }
 }

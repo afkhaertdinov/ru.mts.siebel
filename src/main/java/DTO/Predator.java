@@ -1,3 +1,7 @@
+package DTO;
+
+import DTO.AbstractAnimal;
+
 public abstract class Predator extends AbstractAnimal {
     protected String habitat; // Среда обитания
 
@@ -17,5 +21,15 @@ public abstract class Predator extends AbstractAnimal {
 
     public String getHabitat() {
         return habitat;
+    }
+
+    @Override
+    public String toString() {
+        return "Predator{" +
+                "breed='" + breed + '\'' +
+                ", name='" + name + '\'' +
+                ", cost=" + cost +
+                ", character='" + character + '\'' +
+                '}';
     }
 }

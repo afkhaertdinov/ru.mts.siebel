@@ -1,3 +1,5 @@
+package DTO;
+
 public abstract class AbstractAnimal implements Animal {
     protected String breed; // порода
     protected String name; // имя
@@ -46,5 +48,15 @@ public abstract class AbstractAnimal implements Animal {
 
     public void setCharacter(String character) {
         this.character = character;
+    }
+
+    @Override
+    public String toString() {
+        return "AbstractAnimal{" +
+                "breed='" + breed + '\'' +
+                ", name='" + name + '\'' +
+                ", cost=" + cost +
+                ", character='" + character + '\'' +
+                '}';
     }
 }

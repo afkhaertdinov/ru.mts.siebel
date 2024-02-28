@@ -1,3 +1,5 @@
+package DTO;
+
 public class Wolf extends Predator {
 
     public Wolf(String breed, String name, Double cost, String character) {
@@ -9,4 +11,13 @@ public class Wolf extends Predator {
         super(breed, name, cost, character, habitat);
     }
 
+    @Override
+    public String toString() {
+        return "Wolf{" +
+                ", breed='" + breed + '\'' +
+                ", name='" + name + '\'' +
+                ", cost=" + cost +
+                ", character='" + character + '\'' +
+                '}';
+    }
 }
