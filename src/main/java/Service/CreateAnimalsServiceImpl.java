@@ -28,7 +28,7 @@ public class CreateAnimalsServiceImpl implements CreateAnimalsService {
                     System.out.println("Что-то пошло не так");
                     return null;
             }
-            System.out.printf("%02d. " + animalArray[i].toString() + "%n",i+1);
+            System.out.printf("%02d. %s%n",i+1,animalArray[i].toString());
         }
         return animalArray;
     }
@@ -56,7 +56,7 @@ public class CreateAnimalsServiceImpl implements CreateAnimalsService {
                     System.out.println("Что-то пошло не так");
                     return null;
             }
-            System.out.printf("%02d. " + animalArray[i].toString() + "%n",i+1);
+            System.out.printf("%02d. %s%n",i+1,animalArray[i].toString());
             i++;
         } while (i < 10);
         return animalArray;

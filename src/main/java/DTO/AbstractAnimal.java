@@ -18,36 +18,17 @@ public abstract class AbstractAnimal implements Animal {
     public String getBreed() {
         return breed;
     }
-
-    public void setBreed(String breed) {
-        this.breed = breed;
-    }
-
     @Override
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public Double getCost() {
         return cost;
     }
-
-    public void setCost(Double cost) {
-        this.cost = cost;
-    }
-
     @Override
     public String getCharacter() {
         return character;
-    }
-
-    public void setCharacter(String character) {
-        this.character = character;
     }
 
     @Override

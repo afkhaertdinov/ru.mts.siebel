@@ -5,10 +5,6 @@ public class Cat extends Pet {
         super(breed, name, cost, character, "Кот умелый охотник на мышей.");
     }
 
-    public Cat(String breed, String name, Double cost, String character, String voice) {
-        super(breed, name, cost, character, voice);
-    }
-
     @Override
     public String toString() {
         return "Cat{" +

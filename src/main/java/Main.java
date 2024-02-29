@@ -1,4 +1,3 @@
-//import Service.AnimalOfTheBreed;
 import DTO.Animal;
 import Service.*;
 
@@ -15,6 +14,7 @@ public class Main {
         System.out.printf(animalArray != null ? printAnimals(animalArray) : "!!!Массив пустой!!!%n");
 
         // Создаём 10 уникальных животных при помощи метода do..while.
+        //noinspection AccessStaticViaInstance
         animalArray = createAnimals.CreateAnimalService();
         System.out.println("Проверяем последний массив животных:");
         System.out.printf(animalArray != null ? printAnimals(animalArray) : "!!!Массив пустой!!!%n");
@@ -29,7 +29,7 @@ public class Main {
         int i = 1;
         for (Animal animal : animalArray) {
             if (animal != null) {
-                System.out.printf("%02d. " + animal.about() + "%n",i++);
+                System.out.printf("%02d. %s%n",i++,animal.about());
                 System.out.printf("    порода: %s; имя: %s; цена: $%.2f; характер: %s%n",animal.getBreed(),animal.getName(),animal.getCost(),animal.getCharacter());
             }
         }

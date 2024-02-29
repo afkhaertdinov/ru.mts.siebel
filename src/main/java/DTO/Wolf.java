@@ -6,11 +6,6 @@ public class Wolf extends Predator {
         super(breed, name, cost, character, "волка - лесные массивы.");
     }
 
-
-    public Wolf(String breed, String name, Double cost, String character, String habitat) {
-        super(breed, name, cost, character, habitat);
-    }
-
     @Override
     public String toString() {
         return "Wolf{" +

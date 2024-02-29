@@ -1,10 +1,10 @@
 package DTO;
 
 public interface Animal {
-    public String getBreed();
-    public String getName();
-    public Double getCost();
-    public String getCharacter();
-    public abstract String about(); // Коротко о животном
+    String getBreed();
+    String getName();
+    Double getCost();
+    String getCharacter();
+    String about(); // Коротко о животном
 
 }
