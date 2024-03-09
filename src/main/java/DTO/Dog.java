@@ -1,17 +1,10 @@
 package DTO;
 
+import java.time.LocalDate;
+
 public class Dog extends Pet {
-    public Dog(String breed, String name, Double cost, String character) {
-        super(breed, name, cost, character, "Собака - отличный защитник дома.");
+    public Dog(String name, Double cost, String character, LocalDate birthDate) {
+        super("собака", name, cost, character, birthDate);
     }
 
-    @Override
-    public String toString() {
-        return "Dog{" +
-                "breed='" + breed + '\'' +
-                ", name='" + name + '\'' +
-                ", cost=" + cost +
-                ", character='" + character + '\'' +
-                '}';
-    }
 }

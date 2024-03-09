@@ -1,17 +1,10 @@
 package DTO;
 
+import java.time.LocalDate;
+
 public class Shark extends Predator {
-    public Shark(String breed, String name, Double cost, String character) {
-        super(breed, name, cost, character, "акулы - морские водоёмы.");
+    public Shark(String name, Double cost, String character, LocalDate birthDate) {
+        super("акула", name, cost, character, birthDate);
     }
 
-    @Override
-    public String toString() {
-        return "Shark{" +
-                "breed='" + breed + '\'' +
-                ", name='" + name + '\'' +
-                ", cost=" + cost +
-                ", character='" + character + '\'' +
-                '}';
-    }
 }

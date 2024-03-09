@@ -1,25 +1,18 @@
 package DTO;
 
+import java.time.LocalDate;
+
 public abstract class Pet extends AbstractAnimal {
     protected String purpose; // Назначение питомца в истории людей
 
-    public Pet(String breed, String name, Double cost, String character, String purpose) {
-        super(breed, name, cost, character);
-        this.purpose = purpose;
+    public Pet(String breed, String name, Double cost, String character,LocalDate birthDate) {
+        super(breed + "/питомец", name, cost, character, birthDate);
+//        this.purpose = purpose;
     }
 
     @Override
     public String about() {
-        return "Домашний питомец. " + purpose;
+        return "Домашний питомец. " ;
     }
 
-    @Override
-    public String toString() {
-        return "Pet{" +
-                "breed='" + breed + '\'' +
-                ", name='" + name + '\'' +
-                ", cost=" + cost +
-                ", character='" + character + '\'' +
-                '}';
-    }
 }

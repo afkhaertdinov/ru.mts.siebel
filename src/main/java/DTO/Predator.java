@@ -1,25 +1,18 @@
 package DTO;
 
-public abstract class Predator extends AbstractAnimal {
-    protected String habitat; // Среда обитания
+import java.time.LocalDate;
 
-    public Predator(String breed, String name, Double cost, String character, String habitat) {
-        super(breed, name, cost, character);
-        this.habitat = habitat;
+public abstract class Predator extends AbstractAnimal {
+//    protected String habitat; // Среда обитания
+
+    public Predator(String breed, String name, Double cost, String character, LocalDate birthDate) {
+        super(breed + "/хищник", name, cost, character, birthDate);
+//        this.habitat = habitat;
     }
 
     @Override
     public String about() {
-        return "Опасный хищник, среда обитания " + habitat;
+        return "Опасный хищник, среда обитания "; // + habitat;
     }
 
-    @Override
-    public String toString() {
-        return "Predator{" +
-                "breed='" + breed + '\'' +
-                ", name='" + name + '\'' +
-                ", cost=" + cost +
-                ", character='" + character + '\'' +
-                '}';
-    }
 }
