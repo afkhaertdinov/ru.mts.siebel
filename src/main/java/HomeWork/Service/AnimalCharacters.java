@@ -1,4 +1,4 @@
-package Service;
+package HomeWork.Service;
 
 public enum AnimalCharacters {
     SPOKOJNYJ("Спокойный"),

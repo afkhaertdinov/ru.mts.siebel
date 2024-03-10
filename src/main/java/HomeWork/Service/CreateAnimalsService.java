@@ -1,23 +1,24 @@
-package Service;
+package HomeWork.Service;
 
-import DTO.*;
+import HomeWork.DTO.*;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Random;
-import static Service.ConstsClass.*;
+
+import static HomeWork.Service.ConstsClass.*;
 
 public interface CreateAnimalsService {
 
-     static Animal[] CreateAnimalService(){ // Создаём 10 случайных питомцев
+    @SuppressWarnings("UnusedReturnValue")
+    static Animal[] CreateAnimalService() { // Создаём 10 случайных питомцев
         System.out.println("Создаём 10 случайных питомцев через метод интерфейса CreateAnimalService()");
         Animal[] animalArray = new Animal[10];
-        SearchServiceImpl searchService = new SearchServiceImpl();
         int i = 0;
         Random randomNum = new Random();
         while (i < 10) {
             LocalDate localDate = randomDate();
-            switch (randomNum.nextInt(4)){
+            switch (randomNum.nextInt(4)) {
                 case 0:
                     animalArray[i] = new Wolf(AnimalNames.values()[randomNum.nextInt(19)].toString(), randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
                     break;
@@ -34,18 +35,18 @@ public interface CreateAnimalsService {
                     System.out.println("Что-то пошло не так");
                     return null;
             }
-            System.out.printf("%02d. %s%n    ",i+1,animalArray[i].toString());
-            searchService.checkLeapYearAnimal(animalArray[i]);
+            System.out.printf("%02d. %s%n", i + 1, animalArray[i].toString());
             i++;
         }
         return animalArray;
     }
 
-     Animal[] createAnimalServiceImpl(int num);
+    @SuppressWarnings("UnusedReturnValue")
+    Animal[] createAnimalServiceImpl(int num);
 
-     static LocalDate randomDate(){
-         double dblRandom = new Random().nextDouble();
-         return LocalDate.ofInstant(Instant.ofEpochSecond((long) (STARTDATE + (ENDDATE - STARTDATE) * dblRandom)), ZoneId.of("Europe/Moscow"));
-     }
+    static LocalDate randomDate() {
+        double dblRandom = new Random().nextDouble();
+        return LocalDate.ofInstant(Instant.ofEpochSecond((long) (STARTDATE + (ENDDATE - STARTDATE) * dblRandom)), ZoneId.of("Europe/Moscow"));
+    }
 
 }

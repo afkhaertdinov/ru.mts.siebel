@@ -1,4 +1,4 @@
-package DTO;
+package HomeWork.DTO;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -18,7 +18,6 @@ public abstract class AbstractAnimal implements Animal {
         this.birthDate = birthDate;
     }
 
-    public abstract String about(); // Коротко о животном
     @Override
     public String getBreed() {
         return breed;
@@ -45,7 +44,7 @@ public abstract class AbstractAnimal implements Animal {
                 ", name='" + name + '\'' +
                 ", cost= $" + String.format("%.2f",cost) + '\'' +
                 ", character='" + character + '\'' +
-                ", birthDate='" + birthDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) +
+                ", birthDate='" + (birthDate == null?"":birthDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))) +
                 '}';
     }
 }

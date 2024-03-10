@@ -1,7 +1,6 @@
-package Service;
+package HomeWork.Service;
 
-import DTO.*;
-
+import HomeWork.DTO.*;
 import java.time.LocalDate;
 import java.util.Random;
 
@@ -35,6 +34,7 @@ public class CreateAnimalsServiceImpl implements CreateAnimalsService {
         return animalArray;
     }
 
+    @SuppressWarnings("unused")
     public static Animal[] CreateAnimalService(){
         System.out.println("Создаём 10 случайных питомцев через метод класса CreateAnimalService()");
         Animal[] animalArray = new Animal[10];
