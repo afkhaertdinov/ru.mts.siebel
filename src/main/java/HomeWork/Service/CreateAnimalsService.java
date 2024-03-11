@@ -35,7 +35,7 @@ public interface CreateAnimalsService {
                     System.out.println("Что-то пошло не так");
                     return null;
             }
-            System.out.printf("%02d. %s%n", i + 1, animalArray[i].toString());
+//            System.out.printf("%02d. %s%n", i + 1, animalArray[i].toString());
             i++;
         }
         return animalArray;
