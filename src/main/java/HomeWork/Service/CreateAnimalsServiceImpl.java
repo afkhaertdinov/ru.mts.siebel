@@ -2,66 +2,79 @@ package HomeWork.Service;
 
 import HomeWork.DTO.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public class CreateAnimalsServiceImpl implements CreateAnimalsService {
     @Override
-    public Animal[] createAnimalServiceImpl(int num) {
+    public HashMap<String, List<Animal>> createAnimalServiceImpl(int num) {
         System.out.println("Создаём " + num + " случайных питомцев через метод класса CreateAnimalServiceImpl(int num)");
-        Animal[] animalArray = new Animal[num];
+        HashMap<String, List<Animal>> hashMap = new HashMap<>();
+        List<Animal> animalList;
+        Animal animal;
         Random randomNum = new Random();
-        LocalDate localDate = CreateAnimalsService.randomDate();
         for (int i = 0; i < num; i++) {
+            LocalDate localDate = CreateAnimalsService.randomDate();
             switch (randomNum.nextInt(4)){
                 case 0:
-                    animalArray[i] = new Wolf(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
+                    animal = new Wolf(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
                     break;
                 case 1:
-                    animalArray[i] = new Shark(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
+                    animal = new Shark(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
                     break;
                 case 2:
-                    animalArray[i] = new Dog(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
+                    animal = new Dog(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
                     break;
                 case 3:
-                    animalArray[i] = new Cat(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
+                    animal = new Cat(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
                     break;
                 default:
                     System.out.println("Что-то пошло не так");
                     return null;
             }
-//            System.out.printf("%02d. %s%n",i+1,animalArray[i].toString());
+            animalList = hashMap.get(animal.getBreed());
+            if (animalList == null) animalList = new ArrayList<>();
+            animalList.add(animal);
+            hashMap.put(animal.getBreed(), animalList);
         }
-        return animalArray;
+        return hashMap;
     }
 
     @SuppressWarnings("unused")
-    public static Animal[] CreateAnimalService(){
-        System.out.println("Создаём 10 случайных питомцев через метод класса CreateAnimalService()");
-        Animal[] animalArray = new Animal[10];
+    public static HashMap<String, List<Animal>> CreateAnimalService(){
+        System.out.println("Создаём 10 случайных питомцев через перегруженный метод класса CreateAnimalService()");
+        HashMap<String, List<Animal>> hashMap = new HashMap<>();
+        List<Animal> animalList;
+        Animal animal;
         int i = 0;
         Random randomNum = new Random();
-        LocalDate localDate = CreateAnimalsService.randomDate();
         do {
+            LocalDate localDate = CreateAnimalsService.randomDate();
             switch (randomNum.nextInt(4)){
                 case 0:
-                    animalArray[i] = new Wolf(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
+                    animal = new Wolf(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
                     break;
                 case 1:
-                    animalArray[i] = new Shark(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
+                    animal = new Shark(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
                     break;
                 case 2:
-                    animalArray[i] = new Dog(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
+                    animal = new Dog(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
                     break;
                 case 3:
-                    animalArray[i] = new Cat(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
+                    animal = new Cat(AnimalNames.values()[randomNum.nextInt(19)].toString(),randomNum.nextDouble() * 1000, AnimalCharacters.values()[randomNum.nextInt(5)].toString(), localDate);
                     break;
                 default:
                     System.out.println("Что-то пошло не так");
                     return null;
             }
-//            System.out.printf("%02d. %s%n",i+1,animalArray[i].toString());
+            animalList = hashMap.get(animal.getBreed());
+            if (animalList == null) animalList = new ArrayList<>();
+            animalList.add(animal);
+            hashMap.put(animal.getBreed(), animalList);
             i++;
         } while (i < 10);
-        return animalArray;
+        return hashMap;
     }
 }

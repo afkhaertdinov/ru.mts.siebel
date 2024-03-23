@@ -4,10 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
-import java.util.Arrays;
+import java.util.*;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -45,11 +44,8 @@ public class MainParameterizedTest {
     })
     void testNoLeapYear(String clas, String name, Double cost, String character, LocalDate birthDate) {
         Animal animal;
-        Class<?> clazz;
         try {
-            clazz = Class.forName("HomeWork.DTO." + clas);
-            Constructor<?> constructor = clazz.getConstructor(String.class, Double.class, String.class, LocalDate.class);
-            animal = (Animal) constructor.newInstance(name, cost, character, birthDate);
+            animal = (Animal) Class.forName("HomeWork.DTO." + clas).getConstructor(String.class, Double.class, String.class, LocalDate.class).newInstance(name, cost, character, birthDate);
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
                  InvocationTargetException e) {
             throw new RuntimeException(e);
@@ -65,6 +61,7 @@ public class MainParameterizedTest {
     @ParameterizedTest
     @MethodSource("createAnimal")
     public void parameterizedMethodSourceTest(Animal animal){
+        System.out.println(animal);
         try {
             Assertions.assertEquals(animal.getName() + (animal.getBirthDate().isLeapYear()?"":" не") + " был рожден в високосный год",
                     searchService.checkLeapYearAnimal(animal));
@@ -73,8 +70,9 @@ public class MainParameterizedTest {
         }
     }
     public static Stream<Animal> createAnimal(){
-        CreateAnimalsServiceImpl createAnimals = new CreateAnimalsServiceImpl();
-        Animal[] animal = createAnimals.createAnimalServiceImpl(CONSTNUM);
-        return Arrays.stream(animal);
+        HashMap<String, List<Animal>> hashMapAnimals = new CreateAnimalsServiceImpl().createAnimalServiceImpl(CONSTNUM);
+        ArrayList<Animal> animals = new ArrayList<>();
+        for (Map.Entry<String, List<Animal>> entry: hashMapAnimals.entrySet()) animals.addAll(entry.getValue());
+        return animals.stream();
     }
 }

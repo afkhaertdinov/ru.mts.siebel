@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 import HomeWork.DTO.*;
 import HomeWork.Service.*;
@@ -28,7 +29,7 @@ class MainTest {
     @Test
     @DisplayName("Проверяем срабатывание исключения InvalidAnimalException при вызове метода Main.testSearchService")
     void testSearchServiceInvalidAnimalException() {
-        InvalidAnimalException exception = assertThrows(InvalidAnimalException.class, Main::testSearchService);
+        InvalidAnimalException exception = assertThrows(InvalidAnimalException.class, () -> Main.testSearchService("Вольф", 99.99, "Гадкий", null));
         Assertions.assertEquals("Работа метода завершилась ошибкой", exception.getMessage());
     }
 }
